@@ -7,21 +7,21 @@ import {Navigate} from 'react-router-dom';
 
 const Login = () => {
    
-    const [token,setToken] = useContext(store)
+    const [token,setToken] = useContext(store);
     const [data,setData] = useState({
         email:'',
         password:''
     })
+   
     const changeHandler = e => {
         setData({...data,[e.target.name]:e.target.value})
     }
     
         const submitHandler = e =>{
-        try{
-            e.preventDefault();
-            axios.post('http://localhost:5000/login', data).then(
-            res => setToken(res.data.token)
-            )
+        e.preventDefault();
+        try{    
+             axios.post('http://localhost:5000/login',data).then(
+            res => setToken(res.data))
        }catch(err){
         console.log(err);
         }
@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div>
         <center>
-            <form onSubmit={submitHandler} autocomplete='off'>
+            <form onSubmit={submitHandler} >
                 <h3>Login</h3>
                 <input type="email" onChange={changeHandler} name="email" placeholder='Email' /><br/>
                 <input type="password" onChange={changeHandler} name="password" placeholder='Password' /><br/>

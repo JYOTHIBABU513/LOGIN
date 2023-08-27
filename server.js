@@ -21,8 +21,17 @@ app.post('/register', async (req,res) => {
     try{
         const {username,email,password,confirmpassword} = req.body;
 
+        const data = {
+            username:username,
+            email:email,
+            password:password,
+            confirmpassword:confirmpassword
+        }
+
         if(password !== confirmpassword){
-            return res.status(400).send('Passwords are not matching');
+            statusCode=400;
+            response="Passwords are not matching";
+            return res.status(statusCode).send(response);
         }
         // email validation
         // username - length, alphanumeric, etc - validation
@@ -30,6 +39,7 @@ app.post('/register', async (req,res) => {
         if(exist){
             statusCode=400;
             response="User Already Exist";
+            
         }else{
             let newUser = new Registeruser({
                 username,
@@ -38,8 +48,9 @@ app.post('/register', async (req,res) => {
                 confirmpassword
             })
             await newUser.save();
-            statusCode=200;
+            statusCode= 200;
             response="Registered successfully...";
+            
         }
     }
     catch(err){
@@ -48,7 +59,7 @@ app.post('/register', async (req,res) => {
         response="Internal server Error";
     }
     
-    res.status(statusCode).send({"response":response,"status": statusCode })
+    return res.status(statusCode).send(response)
 })
 app.post('/login', async (req,res) => {
     try{

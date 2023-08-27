@@ -13,20 +13,19 @@ const Register = () => {
         setData({...data,[e.target.name]:e.target.value})
     }
     const submitHandler = e =>{
+        e.preventDefault();
         try{
-             e.preventDefault();
-            axios.post('http://localhost:5000/register', data).then(
-            res => alert(res.data)
-        ) 
+            axios.post('http://localhost:5000/register',data).then(
+            res => alert(JSON.stringify(res.data)))
         }catch(err){
         console.log(err)
-    }
+        }
     }
 
   return (
     <div>
         <center>
-            <form onSubmit={submitHandler} autocomplete='off'>
+            <form onSubmit={submitHandler} >
                 <h3>Register</h3>
                 <input type="text" onChange={changeHandler} name="username" placeholder='User Name' /><br/>
                 <input type="email" onChange={changeHandler} name="email" placeholder='Email' /><br/>
