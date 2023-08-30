@@ -4,6 +4,7 @@ const Registeruser = require('./model');
 const jwt = require('jsonwebtoken');
 const middleware = require('./middleware');
 const cors = require('cors');
+const Msgmodel = require('./Msgmodel');
 
 const app = express();
 
@@ -101,6 +102,36 @@ app.get('/myprofile',middleware,async(req,res) => {
     catch(err){
         console.log(err);
         return res.status(500).send('Invalid Token')
+    }
+})
+
+app.post('/addmsg',middleware,async(req,res) => {
+    try{
+        const {text} = req.body;
+        const exist = await Registeruser.findById(req.user.id);
+        let newmsg = new Msgmodel({
+            user: req.user.id,
+            username : exist.username,
+            text
+        })
+        await newmsg.save();
+        let allmsg = await Msgmodel.find();
+        return res.json(allmsg)
+    }
+    catch(err){
+        console.log(err);
+        return res.status(500).send('Server Error')
+    }
+})
+
+app.get('/getmsg',middleware,async(req,res) => {
+    try{
+        let allmsg = await Msgmodel.find();
+        return res.json(allmsg)
+    }
+    catch(err){
+        console.log(err);
+        return res.status(500).send('Server Error')
     }
 })
 
