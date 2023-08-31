@@ -1,6 +1,6 @@
 import React, { useState,createContext } from 'react'
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
-import Nav from './Nav';
+import Navbar from './Navbar';
 import Register from './Register';
 import Login from './Login';
 import Myprofile from './Myprofile';
@@ -14,7 +14,7 @@ const App = () => {
     <div>
       <store.Provider value={[token,setToken]}>
       <BrowserRouter>
-        <Nav />
+        <Navbar />
         <Routes>
           <Route path='/register' Component={Register} />
           <Route path='/login' Component={Login} />
