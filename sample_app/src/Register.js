@@ -27,11 +27,11 @@ const Register = () => {
         <center>
             <form onSubmit={submitHandler} >
                 <h3>Register</h3>
-                <input type="text" onChange={changeHandler} name="username" placeholder='User Name' /><br/>
-                <input type="email" onChange={changeHandler} name="email" placeholder='Email' /><br/>
-                <input type="password" onChange={changeHandler} name="password" placeholder='Password' /><br/>
-                <input type="password" onChange={changeHandler} name="confirmpassword" placeholder='Confirm Password' /><br/>
-                <input type="submit" value="Register" /><br/>
+                <input style={{"margin":"3px"}} type="text" onChange={changeHandler} name="username" placeholder='User Name' /><br/>
+                <input style={{"margin":"3px"}} type="email" onChange={changeHandler} name="email" placeholder='Email' /><br/>
+                <input style={{"margin":"3px"}} type="password" onChange={changeHandler} name="password" placeholder='Password' /><br/>
+                <input style={{"margin":"3px"}} type="password" onChange={changeHandler} name="confirmpassword" placeholder='Confirm Password' /><br/>
+                <input style={{"margin":"3px"}} type="submit" value="Register" /><br/>
             </form>
         </center>
     </div>

@@ -45,8 +45,8 @@ const Myprofile = () => {
           <div class="card-body">
             {
               allmsg.length>=1 ?
-                allmsg.map(message => <div class="card">
-                <div class="card-body"> 
+                allmsg.map(message => <div class="card" style={{"margin":"5px"}}>
+                <div class="card-body" > 
                   <h5 class="card-title">{message.username} <Moment style={{"fontSize":"11px"}}format='hh:mm:ss'>{message.date}</Moment></h5>
                   <p>{message.text}</p>
                 </div>
@@ -55,8 +55,8 @@ const Myprofile = () => {
               <h1>Message Loading</h1>
             }
             <form onSubmit={submitHandler}>
-              <input type="text" onChange={e => setNewmsg(e.target.value)}/>
-              <input type="submit" value="Send Message" />
+              <input style={{"margin":"2px"}} type="text" onChange={e => setNewmsg(e.target.value)}/>
+              <input style={{"margin":"2px"}} type="submit" value="Send Message" />
             </form>
             <hr />
             <button class="btn btn-primary" onClick={()=>setToken(null)}>Logout</button>

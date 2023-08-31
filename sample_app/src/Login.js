@@ -35,8 +35,8 @@ const Login = () => {
         <center>
             <form onSubmit={submitHandler} >
                 <h3>Login</h3>
-                <input type="email" onChange={changeHandler} name="email" placeholder='Email' /><br/>
-                <input type="password" onChange={changeHandler} name="password" placeholder='Password' /><br/>
+                <input style={{"margin":"3px"}} type="email" onChange={changeHandler} name="email" placeholder='Email' /><br/>
+                <input style={{"margin":"3px"}} type="password" onChange={changeHandler} name="password" placeholder='Password' /><br/>
                 <input type="submit" value="Login" /><br/>
             </form>
         </center>
